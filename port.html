@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family:cursive;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .sidebar {
+            height: 100vh;
+            width: 250px;
+            background-color: #781a1ae5;
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 20px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            font-size: 18px;
+            color: #f1ebebaf;
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 80%;
+            text-align: center;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #f1f1f1;
+            background-color: #333;
+        }
+
+        .content {
+            flex: 1;
+            padding: 16px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Add more styles as needed */
+    </style>
+    <title>Your Portfolio</title>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2><span style="color: antiquewhite;">Sowmiya S T</span></h2>
+    <a href="home.html" >Home</a>
+    <a href="about.html" target="contentFrame">About</a>
+    <a href="projects.html" target="contentFrame">Projects</a>
+    <a href="co-curricular.html" target="contentFrame">co-curricular</a>
+    <a href="contact.html" target="contentFrame">Contact</a>
+</div>
+
+
+<div class="content">
+    <div class="page">
+    <h1><i><span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><span style="color: black;">Hi There,<br> I'm Sowmiya S T</span></span></</i></h1>
+    <h1><i><span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><span style="color: black;">Welcome to my Digital Portfolio!</span></span></i></h1>
+    <h1><i><span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><span style="color: black;">Explore my world of Engineering and Business</span></span></i></h1>
+    <h1><i><span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><span style="color: black;">Let's Connect!</span></span></i></h1>
+    </div>
+    <iframe name="contentFrame" id="contentFrame"></iframe>
+
+    
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const sidebarLinks = document.querySelectorAll('.sidebar a');
+        const contentFrame = document.getElementById('contentFrame');
+
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetPage = this.getAttribute('href');
+                document.querySelector(".page").textContent=null;
+                // Load content into the iframe
+                contentFrame.src = targetPage;
+
+
+                // Highlight the active link
+                sidebarLinks.forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
